@@ -80,16 +80,17 @@ app.get('/getFood', function(req, res){
 });
 
 /* Add food to username in db */
-app.get('/addRecipes', function(req, res){
+app.get('/getRecipes', function(req, res){
 	var username = req.query.username;
 	var sampleURL = "http://food2fork.com/api/search?key=61201e608a47665ae57fe1b61fb7777a&q=shredded%20chicken,pork";
 	
 	var foodUrl = 'http://localhost:3001/getFood?username=' + username;
 	console.log("sending self request");
 	request(foodUrl, function (error, response, body) {
-	    console.log(response);
 	    if (!error && response.statusCode == 200) {
 		console.log(body); // Show the HTML for the Modulus homepage.
+		var jsonObject = JSON.parse(body);
+		console.log("foods: " + jsonObject.foods);
 	    }
 	});
 });
