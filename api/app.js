@@ -84,7 +84,7 @@ app.get('/addRecipes', function(req, res){
 	var username = req.query.username;
 	var sampleURL = "http://food2fork.com/api/search?key=61201e608a47665ae57fe1b61fb7777a&q=shredded%20chicken,pork";
 	
-	var foodUrl = "localhost:3001/getFood?username=" + username;
+	var foodUrl = 'http://localhost:3001/getFood?username=' + username;
 	console.log("sending self request");
 	request(foodUrl, function (error, response, body) {
 	    console.log(response);
