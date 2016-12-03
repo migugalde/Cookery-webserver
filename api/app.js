@@ -33,7 +33,7 @@ app.get('/removeFood', function(req, res){
 	var username = req.query.username;
 	var food = req.query.food;
 	
-	db.get("SELECT name FROM sqlite_master WHERE type='table' AND name='foods'", function(error, row) {
+	db.get("SELECT name FROM sqlite_master WHERE type='table' AND name='food'", function(error, row) {
 		if (row !== undefined) {
 			console.log("table exists. cleaning existing records");
 			db.run("DELETE FROM food WHERE username=(?) AND food=(?)",username, food);
@@ -41,7 +41,7 @@ app.get('/removeFood', function(req, res){
 		else {
 			console.log("creating table");
 			db.run("CREATE TABLE food (username TEXT, food TEXT, PRIMARY KEY (username, food) )", function() {
-				db.run("INSERT OR REPLACE INTO foods (username, food) " + "VALUES (?, ?)",username, food);
+				db.run("INSERT OR REPLACE INTO food (username, food) " + "VALUES (?, ?)",username, food);
 			});
 		}
 	});
