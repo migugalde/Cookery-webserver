@@ -96,7 +96,7 @@ app.get('/addFood', function(req, res){
 
 /* Get blog from db */
 app.get('/check', function(req, res){
-			db.each("SELECT * FROM blogs", function(err, row) {
+			db.each("SELECT * FROM food", function(err, row) {
 				console.log(row);
 			 });
 			res.json({});
