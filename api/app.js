@@ -82,7 +82,7 @@ app.get('/getFood', function(req, res){
 					foods = foods + row.food;
 					first = false;
 				} else {
-					foods = foods + "," + row.food + ",";
+					foods = foods + "," + row.food;
 				}
 				//foods = foods + row.food + ",";
 				}, function() {
@@ -93,7 +93,12 @@ app.get('/getFood', function(req, res){
 		else {
 			db.run("CREATE TABLE food (username TEXT, food TEXT, PRIMARY KEY (username, food) )", function() {
 					db.each(query, function(err, row) {
-						foods = foods + row.food + ",";
+						if(first) {
+							foods = foods + row.food;
+							first = false;
+						} else {
+							foods = foods + "," + row.food;
+						}
 						}, function() {
 						var result = {"username" : username, "foods" : foods};
 						res.json(result);
