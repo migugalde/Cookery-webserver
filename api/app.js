@@ -108,7 +108,15 @@ app.get('/getRecipes', function(req, res){
 		var jsonObject = JSON.parse(body);
 		request(sampleUrl+jsonObject.foods, function (error, response, body) {
 		    if (!error && response.statusCode == 200) {
-			res.json(body);
+			var jsonRecipes = JSON.parse(body);
+			var replacer = function(key, value) {
+				if(key == "count" || key == "title" || key == "source_url") {
+					return value;
+				}
+				return undefined;
+			}
+			res.json(json.stringify(jsonRecipes, replacer);
+			//res.json(body);
 		    }
 		});
 	    }
