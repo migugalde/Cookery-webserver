@@ -24,7 +24,17 @@ app.get('/', function (req, res, next) {
   res.render('index.html', { });
 });
 app.get('/cookery', function (req, res, next) {
-  res.render('cookery.html', { });
+  var username = req.query.username;
+  
+  var foodUrl = 'http://localhost:3001/getFood?username=' + username;
+	request(foodUrl, function (error, response, body) {
+	    if (!error && response.statusCode == 200) {
+	        var jsonObject = JSON.parse(body);
+          res.render('cookery.html', { foodList: body});
+	    }
+	});
+  
+  //res.render('cookery.html', { });
 });
 
 
