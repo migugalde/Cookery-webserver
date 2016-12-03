@@ -52,6 +52,15 @@ app.get('/getFood', function(req, res){
 	var username = req.query.username;
 	var food = req.query.food;
 	
+	var values  = [];
+	var query = "SELECT * FROM links WHERE username=" + username;
+	db.each(query, function(err, row) {
+		values.push({"username": row.username, "food": row.food});
+		}, function() {
+		var result = {"data" : values};
+		res.json(result);
+	});
+	
 	db.get("SELECT name FROM sqlite_master WHERE type='table' AND name='foods'", function(error, row) {
 		if (row !== undefined) {
 			console.log("table exists. cleaning existing records");
