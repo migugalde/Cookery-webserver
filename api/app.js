@@ -111,10 +111,10 @@ app.get('/getRecipes', function(req, res){
 			var jsonRecipes = JSON.parse(body);
 			console.log(jsonRecipes);
 			var replacer = function(key, value) {
-				if(key == "count") {
-					return undefined
+				if(key == "count" || key == "recipes") {
+					return value;
 				}
-				return value;
+				return undefined;
 			}
 			res.json(JSON.stringify(jsonRecipes, replacer));
 			//res.json(body);
