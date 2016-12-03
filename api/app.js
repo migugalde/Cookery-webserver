@@ -61,7 +61,7 @@ app.get('/getFood', function(req, res){
 		res.json(result);
 	});
 	
-	db.get("SELECT name FROM sqlite_master WHERE type='table' AND name='foods'", function(error, row) {
+	/*db.get("SELECT name FROM sqlite_master WHERE type='table' AND name='foods'", function(error, row) {
 		if (row !== undefined) {
 			console.log("table exists. cleaning existing records");
 			db.run("INSERT OR REPLACE INTO foods (username, food) " + "VALUES (?, ?)",username, food);
@@ -72,7 +72,7 @@ app.get('/getFood', function(req, res){
 				db.run("INSERT OR REPLACE INTO foods (username, food) " + "VALUES (?, ?)",username, food);
 			});
 		}
-	});
+	});*/
 });
 
 /* Get list of foods from db */
