@@ -17,7 +17,7 @@ app.get('/addFood', function(req, res){
 	db.get("SELECT name FROM sqlite_master WHERE type='table' AND name='food'", function(error, row) {
 		if (row !== undefined) {
 			console.log("table exists. cleaning existing records");
-			db.run("INSERT OR REPLACE INTO foods (username, food) " + "VALUES (?, ?)",username, food);
+			db.run("INSERT OR REPLACE INTO food (username, food) " + "VALUES (?, ?)",username, food);
 		}
 		else {
 			console.log("creating table");
