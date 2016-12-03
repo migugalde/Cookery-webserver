@@ -36,7 +36,7 @@ app.get('/removeFood', function(req, res){
 	db.get("SELECT name FROM sqlite_master WHERE type='table' AND name='foods'", function(error, row) {
 		if (row !== undefined) {
 			console.log("table exists. cleaning existing records");
-			db.run("DELETE FROM Table23 WHERE username=(?) AND food=(?)",username, food);
+			db.run("DELETE FROM food WHERE username=(?) AND food=(?)",username, food);
 		}
 		else {
 			console.log("creating table");
