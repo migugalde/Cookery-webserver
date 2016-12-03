@@ -117,7 +117,6 @@ app.get('/getRecipes', function(req, res){
 				return value;
 			}
 			res.json(JSON.stringify(jsonRecipes, replacer));
-			//res.json(body);
 		    }
 		});
 	    }
