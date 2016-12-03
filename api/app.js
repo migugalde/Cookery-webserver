@@ -7,7 +7,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 var sqlite3 = require('sqlite3').verbose();
-var db = new sqlite3.Database('blogs.db');
+var db = new sqlite3.Database('foods.db');
 
 /* Get blog from db */
 app.get('/check', function(req, res){
