@@ -9,6 +9,25 @@ app.use(bodyParser.json());
 var sqlite3 = require('sqlite3').verbose();
 var db = new sqlite3.Database('foods.db');
 
+/* Get list of foods from db */
+app.get('/addFood', function(req, res){
+	var username = req.query.username;
+	var food = req.query.food;
+	
+	db.get("SELECT name FROM sqlite_master WHERE type='table' AND name='foods'", function(error, row) {
+		if (row !== undefined) {
+			console.log("table exists. cleaning existing records");
+			db.run("INSERT OR REPLACE INTO foods (username, food) " + "VALUES (?, ?)",username, food);
+		}
+		else {
+			console.log("creating table");
+			db.run("CREATE TABLE food (username TEXT, food TEXT, PRIMARY KEY (username, food) )", function() {
+				db.run("INSERT OR REPLACE INTO foods (username, food) " + "VALUES (?, ?)",username, food);
+			});
+		}
+	});
+});
+
 /* Get blog from db */
 app.get('/check', function(req, res){
 			db.each("SELECT * FROM blogs", function(err, row) {
