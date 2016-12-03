@@ -53,12 +53,15 @@ app.get('/getFood', function(req, res){
 	var food = req.query.food;
 	
 	var values  = [];
+	var foods = "";
 	var query = "SELECT * FROM food WHERE username=\'" + username + "\'";
 	console.log(query);
 	db.each(query, function(err, row) {
 		values.push({"username": row.username, "food": row.food});
+		foods = foods + row.food + ",";
 		}, function() {
 		var result = {"data" : values};
+		result = {"username" : username, "foods" : foods};
 		res.json(result);
 	});
 	
