@@ -82,7 +82,8 @@ app.get('/getFood', function(req, res){
 /* Add food to username in db */
 app.get('/getRecipes', function(req, res){
 	var username = req.query.username;
-	var sampleURL = "http://food2fork.com/api/search?key=61201e608a47665ae57fe1b61fb7777a&q=shredded%20chicken,pork";
+	//var sampleUrl = "http://food2fork.com/api/search?key=61201e608a47665ae57fe1b61fb7777a&q=shredded%20chicken,pork";
+	var sampleUrl = "http://food2fork.com/api/search?key=61201e608a47665ae57fe1b61fb7777a&q=";
 	
 	var foodUrl = 'http://localhost:3001/getFood?username=' + username;
 	console.log("sending self request");
@@ -91,6 +92,11 @@ app.get('/getRecipes', function(req, res){
 		console.log(body); // Show the HTML for the Modulus homepage.
 		var jsonObject = JSON.parse(body);
 		console.log("foods: " + jsonObject.foods);
+		request(sampleUrl+foods, function (error, response, body) {
+		    if (!error && response.statusCode == 200) {
+			console.log(body); // Show the HTML for the Modulus homepage.
+		    }
+		});
 	    }
 	});
 });
