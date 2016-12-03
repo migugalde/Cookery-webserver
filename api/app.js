@@ -73,11 +73,18 @@ app.get('/getFood', function(req, res){
 	
 	var foods = "";
 	var query = "SELECT * FROM food WHERE username=\'" + username + "\'";
+	var first = true;
 	
 	db.get("SELECT name FROM sqlite_master WHERE type='table' AND name='food'", function(error, row) {
 		if (row !== undefined) {
 			db.each(query, function(err, row) {
-				foods = foods + row.food + ",";
+				if(first) {
+					foods = foods + row.food;
+					first = false;
+				} else {
+					foods = foods + "," + row.food + ",";
+				}
+				//foods = foods + row.food + ",";
 				}, function() {
 				var result = {"username" : username, "foods" : foods};
 				res.json(result);
