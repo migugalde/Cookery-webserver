@@ -53,7 +53,7 @@ app.get('/getFood', function(req, res){
 	var food = req.query.food;
 	
 	var values  = [];
-	var query = "SELECT * FROM links WHERE username=" + username;
+	var query = "SELECT * FROM food WHERE username=" + username;
 	db.each(query, function(err, row) {
 		values.push({"username": row.username, "food": row.food});
 		}, function() {
