@@ -30,7 +30,8 @@ app.get('/cookery', function (req, res, next) {
 	request(foodUrl, function (error, response, body) {
 	    if (!error && response.statusCode == 200) {
 	        var jsonObject = JSON.parse(body);
-          res.render('cookery.html', { foodList: body});
+		var foods = jsonObject.foods.split(',');
+          	res.render('cookery.html', { foodList: foods});
 	    }
 	});
   
