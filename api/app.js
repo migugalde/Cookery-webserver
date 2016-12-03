@@ -109,6 +109,7 @@ app.get('/getRecipes', function(req, res){
 		request(sampleUrl+jsonObject.foods, function (error, response, body) {
 		    if (!error && response.statusCode == 200) {
 			var jsonRecipes = JSON.parse(body);
+			console.log(jsonRecipes);
 			var replacer = function(key, value) {
 				if(key == "count" || key == "title" || key == "source_url" || key == "recipes") {
 					return value;
