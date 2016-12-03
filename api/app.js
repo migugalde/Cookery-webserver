@@ -111,7 +111,7 @@ app.get('/getRecipes', function(req, res){
 			var jsonRecipes = JSON.parse(body);
 			console.log(jsonRecipes);
 			var replacer = function(key, value) {
-				if(key == "image_url" || key == "f2f_url" || key == "publisher" || key == "publisher_url" || key == "social_rank" || key == "page") {
+				if(key == "image_url" || key == "f2f_url" || key == "publisher" || key == "publisher_url" || key == "social_rank" || key == "page" || key =="recipe_id") {
 					return undefined;
 				}
 				return value;
