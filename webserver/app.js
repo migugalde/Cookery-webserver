@@ -32,7 +32,7 @@ app.get('/cookery', function (req, res, next) {
 	        var jsonObject = JSON.parse(body);
 		var foods = jsonObject.foods.split(',');
 		var foodCheckmarkList = "<form action=\"none\" >";
-		for(int i = 0; i < foods.length; i++) {
+		for(var i = 0; i < foods.length; i++) {
 			foodCheckmarkList += "<input type=\"checkbox\" name=\"foods\" value=\"" + foods[i] + "\">" + foods[i];
 		}
           	res.render('cookery.html', { foodList: foodCheckmarkList});
