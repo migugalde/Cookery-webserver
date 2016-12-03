@@ -92,7 +92,7 @@ app.get('/getRecipes', function(req, res){
 		console.log(body); // Show the HTML for the Modulus homepage.
 		var jsonObject = JSON.parse(body);
 		console.log("foods: " + jsonObject.foods);
-		request(sampleUrl+foods, function (error, response, body) {
+		request(sampleUrl+jsonObject.foods, function (error, response, body) {
 		    if (!error && response.statusCode == 200) {
 			console.log(body); // Show the HTML for the Modulus homepage.
 		    }
