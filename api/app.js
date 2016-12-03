@@ -96,7 +96,7 @@ app.get('/getFood', function(req, res){
 	});
 });
 
-/* Add food to username in db */
+/* Get recipes for a username in db */
 app.get('/getRecipes', function(req, res){
 	var username = req.query.username;
 	//var sampleUrl = "http://food2fork.com/api/search?key=61201e608a47665ae57fe1b61fb7777a&q=shredded%20chicken,pork";
