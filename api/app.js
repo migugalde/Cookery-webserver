@@ -50,12 +50,10 @@ app.get('/removeFood', function(req, res){
 /* Get all food owned by username from db */
 app.get('/getFood', function(req, res){
 	var username = req.query.username;
-	var food = req.query.food;
 	
-	var values  = [];
 	var foods = "";
 	var query = "SELECT * FROM food WHERE username=\'" + username + "\'";
-	console.log(query);
+	/*console.log(query);
 	db.each(query, function(err, row) {
 		values.push({"username": row.username, "food": row.food});
 		foods = foods + row.food + ",";
@@ -63,20 +61,28 @@ app.get('/getFood', function(req, res){
 		var result = {"data" : values};
 		result = {"username" : username, "foods" : foods};
 		res.json(result);
-	});
+	});*/
 	
-	/*db.get("SELECT name FROM sqlite_master WHERE type='table' AND name='foods'", function(error, row) {
+	db.get("SELECT name FROM sqlite_master WHERE type='table' AND name='food'", function(error, row) {
 		if (row !== undefined) {
-			console.log("table exists. cleaning existing records");
-			db.run("INSERT OR REPLACE INTO foods (username, food) " + "VALUES (?, ?)",username, food);
-		}
-		else {
-			console.log("creating table");
-			db.run("CREATE TABLE food (username TEXT, food TEXT, PRIMARY KEY (username, food) )", function() {
-				db.run("INSERT OR REPLACE INTO foods (username, food) " + "VALUES (?, ?)",username, food);
+			db.each(query, function(err, row) {
+				foods = foods + row.food + ",";
+				}, function() {
+				var result = {"username" : username, "foods" : foods};
+				res.json(result);
 			});
 		}
-	});*/
+		else {
+			db.run("CREATE TABLE food (username TEXT, food TEXT, PRIMARY KEY (username, food) )", function() {
+					db.each(query, function(err, row) {
+						foods = foods + row.food + ",";
+						}, function() {
+						var result = {"username" : username, "foods" : foods};
+						res.json(result);
+					});
+			});
+		}
+	});
 });
 
 /* Add food to username in db */
@@ -86,34 +92,17 @@ app.get('/getRecipes', function(req, res){
 	var sampleUrl = "http://food2fork.com/api/search?key=61201e608a47665ae57fe1b61fb7777a&q=";
 	
 	var foodUrl = 'http://localhost:3001/getFood?username=' + username;
-	console.log("sending self request");
 	request(foodUrl, function (error, response, body) {
 	    if (!error && response.statusCode == 200) {
-		console.log(body); // Show the HTML for the Modulus homepage.
 		var jsonObject = JSON.parse(body);
-		console.log("foods: " + jsonObject.foods);
 		request(sampleUrl+jsonObject.foods, function (error, response, body) {
 		    if (!error && response.statusCode == 200) {
 			res.json(body);
-			console.log(body); // Show the HTML for the Modulus homepage.
 		    }
 		});
 	    }
 	});
 });
-
-
-
-/* Create table: should run only once */
-app.get('/createTable', function(req, res) {
-	db.run("CREATE TABLE links (" +
-		"long_url varchar(255)," +
-		"short_url varchar(255)," +
-		"hit_count int)");
-
-	res.json({});	
-})
-
 
 var server = app.listen(3001, function() {
 	console.log('Server on localhost listening on port 3001');
