@@ -1,0 +1,54 @@
+html, body {
+    height: 100%;
+    background-image: url(/static/images/background.jpg);
+    background-size: 100% 100%;
+    text-align: center;
+}
+
+.header_content {
+	font-family: 'Krabougja';
+	color: maroon;
+	font-size: 150px;
+	text-align: center;
+}
+
+#title_first_page {
+	font-family: 'Krabougja';
+	color: maroon;
+	font-size: 200px;
+	text-align: center;
+}
+
+footer {
+	position: absolute;
+	position: fixed;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	padding: 1rem;
+	background-color: #efefef;
+	text-align: center;
+	color: maroon;
+	opacity: 1;
+  	background-color: rgba(255,255,255,0.6);
+}
+
+footer .nav {
+  	margin: 0;
+  	padding: 5px 0;
+}
+
+footer .nav li {
+  	display: inline;
+}
+
+footer .nav li a {
+  	color: maroon;
+  	display: inline;
+  	margin-left: 20px;
+}
+
+@font-face {
+	font-family: 'Krabougja';
+	src: url('/static/fonts/Krabougja.ttf');
+}

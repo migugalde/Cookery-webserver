@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Welcome to Cookery</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="static/css/index.css" type="text/css"/>
+</head>
+<body>
+	<div id=title_first_page>
+		Cookery
+	</div>
+	<div id=page>
+		<form id="getUsername" onsubmit="return GoToKitchen()" action="/kitchen" method="POST">
+			<input type="text" id="username" name="username"><br>
+			<input type="submit" value="Go to my kitchen!">
+		</form>
+
+		<footer>
+			<ul class="nav">
+	          	<li><a href="/">Home</a></li>
+	          	<li><a href="/about" class="hvr-pulse">About Us</a></li>
+	        </ul>
+	        2016 UC Berkeley Info 253 Group Assignment
+		</footer>
+		<script src="/static/js/script.js"></script>
+	</div>
+</body>
+</html>

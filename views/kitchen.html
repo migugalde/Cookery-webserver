@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link type="text/css" rel="stylesheet" href="/static/css/kitchen.css"/>
+		
+		<title>Cookery - My Kitchen</title>
+	</head>
+	<body>
+		<header>
+			<div class="header_content">Cookery</div>
+		</header>
+		<div class="page">
+			Hello, {{{username}}}! <br>
+			Ingredients in your kitchen: <br>
+			<input type="text" action="/kitchen" id="newIngredient" name="newIngredient" placeholder="Chicken, Brocolli, Beef, etc...">
+		   <button type="button" onclick="addButtonClick()">Add!</button>
+		    
+		  	<br><br>
+			<ul id="myIngredients">{{{foodList}}}</ul>
+			
+		  	<br>
+		  	<button type="button" onclick="removeFoods()">Remove checked ingredient(s)</button>
+			<br>
+		    <a href="/recipe">Get Recipes!</a>
+			
+		</div>
+		<footer>
+			<ul class="nav">
+	          	<li><a href="/">Home</a></li>
+	          	<li><a href="/about">About Us</a></li>
+	          	<li><a href="/">Not my kitchen!</a></li>
+	        </ul>
+	        2016 UC Berkeley Info 253 Group Assignment
+		</footer>
+		<script src="/static/js/script.js"></script>
+	</body>
+</html>

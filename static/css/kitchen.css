@@ -1,0 +1,87 @@
+html, body {
+    height: 100%;
+	opacity: 1;
+  	background-color: rgba(255,255,0,0.4);
+    text-align: center;
+}
+
+.header_content {
+	font-family: 'Krabougja';
+	color: maroon;
+	font-size: 100px;
+	text-align: center;
+}
+
+.page {
+	font-family: 'Lucida Console';
+	color: black;
+	font-size: 24px;
+	text-align: center;
+}
+
+footer {
+	position: absolute;
+	position: fixed;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	padding: 1rem;
+	text-align: center;
+	color: maroon;
+	opacity: 1;
+  	background-color: rgba(255,255,255,0.6);
+}
+
+footer .nav {
+  	margin: 0;
+  	padding: 5px 0;
+}
+
+footer .nav li {
+  	display: inline;
+}
+
+footer .nav li a {
+  	color: maroon;
+  	display: inline;
+  	margin-left: 20px;
+}
+
+@font-face {
+	font-family: 'Krabougja';
+	src: url('/static/fonts/Krabougja.ttf');
+}
+
+#myIngredients {
+	position: center;
+	margin-left: 275px;
+	margin-right: 275px;
+	list-style: none;
+	padding-left: 0;
+	display: flex;
+	flex-direction: row;
+    flex-flow: row wrap;
+}
+
+#myIngredients li {
+	color: maroon;
+    padding: 10px;
+    width: 20%;
+	padding: 2px 15px 5px;
+	border: 1px solid #000;
+	list-style: none;
+	text-align: center;
+
+}
+
+#ingredientBox {
+	display: none;
+}
+
+.unchecked {
+	background-color: lightgrey;
+}
+
+.checked {
+	background-color: blue;
+}

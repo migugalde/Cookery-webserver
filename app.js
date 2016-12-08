@@ -1,3 +1,5 @@
+var API_URL = "http://localhost:3001/"
+
 /******NO NEED TO MODIFY ****/
 var express = require('express'); // Adding the express library 
 var mustacheExpress = require('mustache-express'); // Adding mustache templating system and connecting it to 
@@ -23,24 +25,64 @@ app.use('/static', express.static(__dirname + '/static'));
 app.get('/', function (req, res, next) {
   res.render('index.html', { });
 });
-app.get('/cookery', function (req, res, next) {
-  var username = req.query.username;
-  
-  var foodUrl = 'http://localhost:3001/getFood?username=' + username;
-	request(foodUrl, function (error, response, body) {
-	    if (!error && response.statusCode == 200) {
-	        var jsonObject = JSON.parse(body);
-		var foods = jsonObject.foods.split(',');
-		var foodCheckmarkList = "<form action=\"none\" >";
-		for(var i = 0; i < foods.length; i++) {
-			foodCheckmarkList += "<input type=\"checkbox\" name=\"foods\" value=\"" + foods[i] + "\">" + foods[i] + "<br>";
-		}
-          	res.render('cookery.html', { foodList: foodCheckmarkList});
-	    }
-	});
-  
-  //res.render('cookery.html', { });
+
+app.get('/kitchen', function (req, res, next) {
+  res.render('index.html');
 });
+
+app.get('/about', function (req, res, next) {
+  res.render('about.html');
+});
+
+app.post('/kitchen', function (req, res, next) {
+  name = req.body.username;
+  var foodCheckmarkList = "";
+  var foodUrl = API_URL + "getFood?username=" + name;
+  request(foodUrl, function (error, response, body) {
+    if (!error && response.statusCode == 200) {
+      var jsonObject = JSON.parse(body);
+	  var foods = jsonObject.foods.split(',');
+	  console.log(foods);
+	  for(var i = 0; i < foods.length; i++) {
+	  	if (foods[i].length != 0) {
+	  	  var date = new Date();
+		  var id = "" + i;
+	  	  foodCheckmarkList += "<li id=\"li_" + id + "\" class=\"unchecked\"><span id=\"sp_" + id + "\">" + foods[i] + "<\/span><\/li>"   	
+	  	}
+	  }
+    }
+    console.log(foodCheckmarkList);
+    if (foodCheckmarkList == "") {
+    	res.render('kitchen.html', { username: name});
+  	} else {
+  		res.render('kitchen.html', { username: name, foodList: foodCheckmarkList});
+  	}
+    
+  });
+});
+
+app.get('/recipe', function (req, res, next) {
+  res.render('recipe.html', { });
+});
+
+// app.get('/cookery', function (req, res, next) {
+//   var username = req.query.username;
+  
+//   var foodUrl = 'http://localhost:3001/getFood?username=' + username;
+// 	request(foodUrl, function (error, response, body) {
+// 	    if (!error && response.statusCode == 200) {
+// 	        var jsonObject = JSON.parse(body);
+// 		var foods = jsonObject.foods.split(',');
+// 		var foodCheckmarkList = "<form action=\"none\" >";
+// 		for(var i = 0; i < foods.length; i++) {
+// 			foodCheckmarkList += "<input type=\"checkbox\" name=\"foods\" value=\"" + foods[i] + "\">" + foods[i] + "<br>";
+// 		}
+//           	res.render('cookery.html', { foodList: foodCheckmarkList});
+// 	    }
+// 	});
+  
+//   //res.render('cookery.html', { });
+// });
 
 
 

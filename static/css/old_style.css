@@ -1,0 +1,123 @@
+html, body {
+    height: 100%;
+    font-family: 'Helvetica', sans-serif;
+}
+
+header {
+	border-bottom: 1px solid #ddd;
+	width: 80%;
+  	margin: 10px auto;
+  	text-align: center;
+  	padding: 0 10px;
+}
+
+.header_content {
+	font-family: 'Krabougja';
+	color: teal;
+	font-size: 50px;
+}
+
+.page {
+	margin-bottom: 100px;
+	width: 50%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.content_links {
+	color: teal;
+	margin-left: 275px;
+}
+
+.content_links ul {
+	list-style: none;
+	padding-left: 0;
+	display: inline;
+}
+
+.content_links ul li {
+	color: teal;
+	background: #fffb71;
+    padding: 10px;
+    width: 50%;
+	margin-bottom: 10px;
+	padding: 2px 15px 5px;
+	border: 1px solid #000;
+	list-style: none;
+	text-align: center;
+
+}
+
+.content_links ul li a{
+	color: teal;
+	text-decoration: none;
+}
+
+ 
+.content_links ul li.here {
+    border-bottom: 1px solid #ffc;
+    list-style: none;
+    display: inline;
+}
+
+
+#profile_picture {
+	margin: auto;
+	width: 300px;
+	height: 300px;
+	border-radius: 150px;
+	background: url(/static/images/profile_picture.jpg) no-repeat;
+	background-size: 300px;
+	background-position: center; 
+}
+
+#description {
+	width: 80%;
+	margin: auto;
+	color: teal;
+}
+
+#form_response {
+	color: red;
+	font-style: italic;
+}
+
+#contactUsForm {
+	color: teal;
+}
+
+#blogInputForm {
+	color: teal;
+}
+
+footer {
+	position: absolute;
+	position: fixed;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	padding: 1rem;
+	background-color: #efefef;
+	text-align: center;
+	color: teal;
+}
+
+footer .nav {
+  	margin: 0;
+  	padding: 5px 0;
+}
+
+footer .nav li {
+  	display: inline;
+}
+
+footer .nav li a {
+  	color: teal;
+  	display: inline;
+  	margin-left: 20px;
+}
+
+@font-face {
+	font-family: 'Krabougja';
+	src: url('/static/fonts/Krabougja.ttf');
+}
