@@ -62,7 +62,25 @@ app.post('/kitchen', function (req, res, next) {
 });
 
 app.get('/recipe', function (req, res, next) {
-  res.render('recipe.html', { });
+  name = req.body.username;
+  var recipeUrl = API_URL + 'getRecipes?username=' + name;
+  request(recipeUrl, function (error, response, body) {
+    if (!error && response.statusCode == 200) {
+      var recipes = JSON.parse(body);
+      for(var i = 0; i < jsonObject.length; i++) {
+      	recipeList += '<a href=\"' + recipes[i].source_url + '\" target=\"_blank\">' + recipes[i].title + '</a><br>'
+      	if (recipes[i].image_url != '') {
+      		recipeList += '<img src=\"' + recipes[i].image_url + '><br>'
+      	}
+      }
+    }
+    console.log(recipeList);
+    if (recipeList == '') {
+    	res.render('recipe.html', {});
+    } else {
+    	res.render('recipe.html', { recipes: recipeList });
+    }
+  });
 });
 
 // app.get('/cookery', function (req, res, next) {
