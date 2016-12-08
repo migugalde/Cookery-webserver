@@ -8,22 +8,33 @@
 		<title>Cookery - My Kitchen</title>
 	</head>
 	<body>
+		<div class="background"></div>
 		<header>
 			<div class="header_content">Cookery</div>
 		</header>
 		<div class="page">
-			Hello, {{{username}}}! <br>
-			Ingredients in your kitchen: <br>
+			Hello, this is {{{username}}}'s kitchen! <br><br>
 			<input type="text" action="/kitchen" id="newIngredient" name="newIngredient" placeholder="Chicken, Brocolli, Beef, etc...">
-		   <button type="button" onclick="addButtonClick()">Add!</button>
-		    
+		    <button type="button" class="addButton" onclick="addButtonClick()">
+		    	<img src="/static/images/addButton.png" width="40" height="40" alt="Add!" />
+		    </button>
 		  	<br><br>
 			<ul id="myIngredients">{{{foodList}}}</ul>
 			
 		  	<br>
-		  	<button type="button" onclick="removeFoods()">Remove checked ingredient(s)</button>
+		  	<ul class="buttons">
+		  		<li>
+		  			<button type="button" class="myButtons" onclick="removeFoods()">
+		  				<img src="/static/images/removeButton.png" width="60" height="60" alt="Remove" />
+		  			</button>
+		  		</li>
+		  		<li>
+		  			<button type="button" class="cookButtons" onclick="getRecipes()">
+		  				<img src="/static/images/cookButton.png" width="100" height="100" alt="Get recipes" />
+		  			</button>
+		  		</li>
+		  	</ul>
 			<br>
-		    <a href="/recipe">Get Recipes!</a>
 			
 		</div>
 		<footer>

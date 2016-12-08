@@ -1,4 +1,5 @@
 var API_URL = "http://localhost:3001/"
+var APP_URl = "http://localhost:3000/"
 
 function GoToKitchen() {
 	var username = document.getElementById("username").value;
@@ -121,3 +122,22 @@ function setOnClick() {
 }
 
 setOnClick();
+
+function getRecipes() {
+	var username = localStorage.getItem('username');
+
+	var list = document.getElementById("myIngredients");
+	var children = list.children;
+	var foods = "";
+	for (var i = 0; i < children.length; i++) {
+	    var child = children[i];
+	    if (child.classList.contains("checked")) {
+	    	var foodname = child.childNodes[0].innerText;
+	    	foods = foods + foodname + ",";
+	    }
+	}
+	console.log(foods);
+
+	var url= APP_URl + "recipe?username=" + username + "&foods=" + foods
+	window.location = url;
+}

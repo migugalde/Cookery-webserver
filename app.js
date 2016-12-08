@@ -63,11 +63,12 @@ app.post('/kitchen', function (req, res, next) {
 
 app.get('/recipe', function (req, res, next) {
   name = req.body.username;
+  foods = req.body.foods;
   var recipeUrl = API_URL + 'getRecipes?username=' + name;
   request(recipeUrl, function (error, response, body) {
     if (!error && response.statusCode == 200) {
       var recipes = JSON.parse(body);
-      for(var i = 0; i < jsonObject.length; i++) {
+      for(var i = 0; i < recipes.length; i++) {
       	recipeList += '<a href=\"' + recipes[i].source_url + '\" target=\"_blank\">' + recipes[i].title + '</a><br>'
       	if (recipes[i].image_url != '') {
       		recipeList += '<img src=\"' + recipes[i].image_url + '><br>'

@@ -19,17 +19,39 @@ html, body {
 	text-align: center;
 }
 
+input[type=text] {
+    border: none;
+    border-bottom: 3px solid maroon;
+    background-color: transparent;
+    text-align: center;
+    font-size: 40px;
+    color: grey;
+}
+
+input[type=submit] {
+    background-color: #3CBC8D;
+    border-radius: 4px;
+    border: none;
+    color: white;
+    padding: 8px 16px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+    font-family: 'Krabougja';
+    font-size: 30px;
+}
+
 footer {
-	position: absolute;
-	position: fixed;
-	right: 0;
-	bottom: 0;
-	left: 0;
-	padding: 1rem;
-	background-color: #efefef;
-	text-align: center;
-	color: maroon;
-	opacity: 1;
+	  position: absolute;
+	  position: fixed;
+	  right: 0;
+	  bottom: 0;
+	  left: 0;
+	  padding: 1rem;
+	  background-color: #efefef;
+	  text-align: center;
+	  color: maroon;
+	  opacity: 1;
   	background-color: rgba(255,255,255,0.6);
 }
 
@@ -49,6 +71,6 @@ footer .nav li a {
 }
 
 @font-face {
-	font-family: 'Krabougja';
-	src: url('/static/fonts/Krabougja.ttf');
+	  font-family: 'Krabougja';
+	  src: url('/static/fonts/Krabougja.ttf');
 }

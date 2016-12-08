@@ -1,8 +1,25 @@
 html, body {
     height: 100%;
-	opacity: 1;
-  	background-color: rgba(255,255,0,0.4);
+    position: relative;
     text-align: center;
+}
+
+body {
+    height: 100%;
+    display: block;
+    position: relative;
+}
+
+body::after {
+    content: "";
+    background: url(/static/images/food_doodle.jpg);
+    opacity: 0.10;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;   
 }
 
 .header_content {
@@ -13,7 +30,8 @@ html, body {
 }
 
 .page {
-	font-family: 'Lucida Console';
+	position:relative;
+	font-family: 'Arial';
 	color: black;
 	font-size: 24px;
 	text-align: center;
@@ -78,10 +96,47 @@ footer .nav li a {
 	display: none;
 }
 
+#newIngredient {
+	border: 2px solid maroon;
+    border-radius: 6px;
+    text-align: center;
+}
+
+.addButton {
+	border: none;
+	background: none;
+}
+
 .unchecked {
-	background-color: lightgrey;
+	border: 2px solid maroon;
+    border-radius: 6px;
+	background-color: #F8F8FF;
 }
 
 .checked {
-	background-color: blue;
+	border: 2px solid maroon;
+    border-radius: 6px;
+	background-color:  	#7CFC00;
+}
+
+.buttons {
+	list-style: none;
+}
+
+.buttons li {
+	display: inline;
+}
+
+.myButtons {
+	border: none;
+	background: none;
+	display: inline;
+}
+
+.cookButtons {
+	border: none;
+	background: none;
+	display: inline;
+	margin-bottom: 20px;
+	
 }
