@@ -20,7 +20,13 @@ Cookery is a web application to keep track of the ingredients you have in your k
   * Sqlite: We used sqlite to hold usernames and the foods each user has in their inventory.
   * Node.js: We used Node.js to implement our API which provides: user recipes, user food inventory lists, and the ability to add/remove foods from a users inventory.
 
+*TESTING
+  * Curl: We used curl during testing to make requests to individual routes in our servers. 
+
 * DEPLOYMENT
   * Heroku: We used Heroku to deploy our application to the internet
+
+* PRESENTATION
+  * Browser: For our presentation, we are using a browser (either Chrome or Safari) to make requests, retrieve, and render our project. 
 
 
