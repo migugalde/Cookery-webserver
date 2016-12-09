@@ -8,11 +8,13 @@ body {
     height: 100%;
     display: block;
     position: relative;
+    background-repeat: repeat-x;
 }
 
 body::after {
     content: "";
     background: url(/static/images/food_doodle.jpg);
+    background-repeat: repeat-x;
     opacity: 0.10;
     top: 0;
     left: 0;
