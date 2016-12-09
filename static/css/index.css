@@ -6,17 +6,17 @@ html, body {
 }
 
 .header_content {
-	font-family: 'Krabougja';
-	color: maroon;
-	font-size: 150px;
-	text-align: center;
+    font-family: 'Krabougja';
+    color: maroon;
+    font-size: 120px;
+    text-align: center;
 }
 
 #title_first_page {
-	font-family: 'Krabougja';
-	color: maroon;
-	font-size: 200px;
-	text-align: center;
+    font-family: 'Krabougja';
+    color: maroon;
+    font-size: 200px;
+    text-align: center;
 }
 
 input[type=text] {
@@ -25,7 +25,7 @@ input[type=text] {
     background-color: transparent;
     text-align: center;
     font-size: 40px;
-    color: grey;
+    color: maroon;
 }
 
 input[type=submit] {
@@ -42,35 +42,70 @@ input[type=submit] {
 }
 
 footer {
-	  position: absolute;
-	  position: fixed;
-	  right: 0;
-	  bottom: 0;
-	  left: 0;
-	  padding: 1rem;
-	  background-color: #efefef;
-	  text-align: center;
-	  color: maroon;
-	  opacity: 1;
-  	background-color: rgba(255,255,255,0.6);
+    position: absolute;
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 1rem;
+    background-color: #efefef;
+    text-align: center;
+    color: maroon;
+    opacity: 1;
+    background-color: rgba(255,255,255,0.6);
 }
 
 footer .nav {
-  	margin: 0;
-  	padding: 5px 0;
+    margin: 0;
+    padding: 5px 0;
 }
 
 footer .nav li {
-  	display: inline;
+    display: inline;
 }
 
 footer .nav li a {
-  	color: maroon;
-  	display: inline;
-  	margin-left: 20px;
+    color: maroon;
+    display: inline;
+    margin-left: 20px;
 }
 
 @font-face {
-	  font-family: 'Krabougja';
-	  src: url('/static/fonts/Krabougja.ttf');
+    font-family: 'Krabougja';
+    src: url('/static/fonts/Krabougja.ttf');
+}
+
+.col-md-3 {
+    margin: 0px;
+    padding: 0px;
+}
+
+.thumbnail {
+    background-color:transparent;
+    border: none;
+
+}
+
+.thumbnail img {
+    margin: auto;
+    width: 200px;
+    height: 200px;
+    border-radius: 150px;
+    background-size: 300px;
+    background-position: center; 
+    
+}
+
+.caption {
+    font-family: 'Krabougja';
+    color: maroon;
+    font-size: 18px;
+    text-align: center;
+    text-decoration: none;
+}
+
+.about_page {
+    width: 55%;
+    text-align: center;
+    margin: auto;
 }
