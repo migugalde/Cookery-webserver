@@ -135,11 +135,10 @@ app.get('/recipe', function (req, res, next) {
 
 
 
-  
+var port = process.env.PORT || 8080;
 // Start up server on port 3000 on host localhost
-var server = app.listen(3000, function () {
+var server = app.listen(port, function () {
   var port = server.address().port;
 
-  console.log('Assignment 2 server on localhost listening on port ' + port + '!');
-  console.log('Open up your browser (within your VM) and enter the URL "http://localhost:' + port + '" to view your website!');
+  console.log('server on localhost listening on port ' + port + '!');
 });
