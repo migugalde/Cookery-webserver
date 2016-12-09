@@ -27,7 +27,33 @@ app.get('/', function (req, res, next) {
 });
 
 app.get('/kitchen', function (req, res, next) {
-  res.render('index.html');
+  var name = req.query.username;
+  if (typeof name != 'undefined') {
+    var foodCheckmarkList = "";
+    var foodUrl = API_URL + "getFood?username=" + name;
+    request(foodUrl, function (error, response, body) {
+      if (!error && response.statusCode == 200) {
+        var jsonObject = JSON.parse(body);
+	    var foods = jsonObject.foods.split(',');
+	    console.log(foods);
+	    for(var i = 0; i < foods.length; i++) {
+	  	  if (foods[i].length != 0) {
+	  	    var date = new Date();
+		    var id = "" + i;
+	  	    foodCheckmarkList += "<li id=\"li_" + id + "\" class=\"unchecked\"><span id=\"sp_" + id + "\">" + foods[i] + "<\/span><\/li>"   	
+	  	  }
+	    }
+      }
+      console.log(foodCheckmarkList);
+      if (foodCheckmarkList == "") {
+        res.render('kitchen.html', { username: name});
+  	  } else {
+  		res.render('kitchen.html', { username: name, foodList: foodCheckmarkList});
+  	  }
+    });
+  } else {
+    res.render('index.html');
+  }
 });
 
 app.get('/about', function (req, res, next) {
@@ -62,24 +88,28 @@ app.post('/kitchen', function (req, res, next) {
 });
 
 app.get('/recipe', function (req, res, next) {
-  name = req.body.username;
-  foods = req.body.foods;
-  var recipeUrl = API_URL + 'getRecipes?username=' + name;
+  name = req.query.username;
+  foods = req.query.foods;
+  var recipeUrl = API_URL + 'getRecipes?food=' + foods;
+  var recipeList = '';
   request(recipeUrl, function (error, response, body) {
     if (!error && response.statusCode == 200) {
-      var recipes = JSON.parse(body);
-      for(var i = 0; i < recipes.length; i++) {
-      	recipeList += '<a href=\"' + recipes[i].source_url + '\" target=\"_blank\">' + recipes[i].title + '</a><br>'
-      	if (recipes[i].image_url != '') {
-      		recipeList += '<img src=\"' + recipes[i].image_url + '><br>'
-      	}
+      var ans = JSON.parse(body);
+      var count = ans.count;
+      var recipes = ans.recipes;
+      for(var i = 0; i < count; i++) {
+      	if (typeof recipes[i].source_url != 'undefined' && typeof recipes[i].title != 'undefined') {
+	      recipeList += '<a href=\"' + recipes[i].source_url + '\" target=\"_blank\">' + recipes[i].title + '</a><br>'
+	      if (typeof recipes[i].image_url != 'undefined' && recipes[i].image_url != '') {
+	        recipeList += '<img src=\"' + recipes[i].image_url + '\""><br>'
+	      }
+	    }
       }
     }
-    console.log(recipeList);
     if (recipeList == '') {
-    	res.render('recipe.html', {});
+    	res.render('recipe.html', { username: name });
     } else {
-    	res.render('recipe.html', { recipes: recipeList });
+    	res.render('recipe.html', { username: name, recipes: recipeList });
     }
   });
 });

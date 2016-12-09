@@ -141,3 +141,10 @@ function getRecipes() {
 	var url= APP_URl + "recipe?username=" + username + "&foods=" + foods
 	window.location = url;
 }
+
+function backToKitchen() {
+	var username = localStorage.getItem('username');
+
+	var url= APP_URl + "kitchen?username=" + username
+	window.location = url;
+}
