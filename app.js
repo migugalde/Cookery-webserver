@@ -1,4 +1,4 @@
-var API_URL = "http://localhost:3001/"
+var API_URL = "https://my-cookery-api.herokuapp.com/"
 
 /******NO NEED TO MODIFY ****/
 var express = require('express'); // Adding the express library 

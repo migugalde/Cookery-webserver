@@ -1,5 +1,5 @@
-var API_URL = "http://localhost:3001/"
-var APP_URl = "http://localhost:3000/"
+var API_URL = "https://my-cookery-api.herokuapp.com/"
+var APP_URl = "https://my-cookery.herokuapp.com/"
 
 function GoToKitchen() {
 	var username = document.getElementById("username").value;
