@@ -90,7 +90,7 @@ app.post('/kitchen', function (req, res, next) {
 app.get('/recipe', function (req, res, next) {
   name = req.query.username;
   foods = req.query.foods;
-  var recipeUrl = API_URL + 'getRecipes?username=' + name;
+  var recipeUrl = API_URL + 'getRecipes?food=' + foods;
   var recipeList = '';
   request(recipeUrl, function (error, response, body) {
     if (!error && response.statusCode == 200) {
