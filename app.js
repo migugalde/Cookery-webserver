@@ -1,6 +1,5 @@
 var API_URL = "https://my-cookery-api.herokuapp.com/"
 
-/******NO NEED TO MODIFY ****/
 var express = require('express'); // Adding the express library 
 var mustacheExpress = require('mustache-express'); // Adding mustache templating system and connecting it to 
 var request = require('request')  // Adding the request library (to make HTTP reqeusts from the server)
@@ -18,10 +17,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 // Set up /static path to host css/js/image files directly
 app.use('/static', express.static(__dirname + '/static'));
-/****END OF NO NEED TO MODIFY SECTION ******/
 
 
-// Define your routes here
 app.get('/', function (req, res, next) {
   res.render('index.html', { });
 });
@@ -113,25 +110,6 @@ app.get('/recipe', function (req, res, next) {
     }
   });
 });
-
-// app.get('/cookery', function (req, res, next) {
-//   var username = req.query.username;
-  
-//   var foodUrl = 'http://localhost:3001/getFood?username=' + username;
-// 	request(foodUrl, function (error, response, body) {
-// 	    if (!error && response.statusCode == 200) {
-// 	        var jsonObject = JSON.parse(body);
-// 		var foods = jsonObject.foods.split(',');
-// 		var foodCheckmarkList = "<form action=\"none\" >";
-// 		for(var i = 0; i < foods.length; i++) {
-// 			foodCheckmarkList += "<input type=\"checkbox\" name=\"foods\" value=\"" + foods[i] + "\">" + foods[i] + "<br>";
-// 		}
-//           	res.render('cookery.html', { foodList: foodCheckmarkList});
-// 	    }
-// 	});
-  
-//   //res.render('cookery.html', { });
-// });
 
 
 
